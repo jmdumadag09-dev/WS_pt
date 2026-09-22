@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript Event Listener Example</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            transition: background-color 0.3s;
+        }
+
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input,
+        select {
+            padding: 8px;
+            margin-top: 10px;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+
+        #mouseArea {
+            width: 300px;
+            height: 150px;
+            border: 2px dashed #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JavaScript Event Listener Examples</h1>
+
+    <!-- 1. CLICK EVENT -->
+    <section>
+        <h2>1. Click Event</h2>
+
+        <button id="myButton">Click Me</button>
+
+        <p id="message1">Waiting for you to click the button...</p>
+    </section>
+
+
+    <!-- 2. INPUT EVENT -->
+    <section>
+        <h2>2. Input Event</h2>
+
+        <label for="name">Enter your name:</label>
+        <br>
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+        >
+        <button id="submitName">Submit</button>
+
+
+
+        <p id="message2">Your name will appear here.</p>
+    </section>
+
+
+    <!-- 3. KEYBOARD EVENT -->
+    <section>
+        <h2>3. Keyboard Event</h2>
+
+        <p>Press any key on your keyboard.</p>
+
+        <p id="message3">
+            Waiting for you to press a key...
+        </p>
+
+        <p id="keyInfo"></p>
+    </section>
+
+
+    <!-- 4. CHANGE EVENT -->
+    <section>
+        <h2>4. Select / Change Event</h2>
+
+        <label for="categorySelect">
+            Choose a category:
+        </label>
+
+        <br>
+
+        <select id="categorySelect">
+            <option value="">Select a category</option>
+            <option value="Programming">Programming</option>
+            <option value="Database">Database</option>
+            <option value="Networking">Networking</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <p>
+            Selected value:
+            <span id="spanSelectedValue">None</span>
+        </p>
+    </section>
+
+
+    <!-- 5. BACKGROUND COLOR -->
+    <section>
+        <h2>5. Change Background Color</h2>
+
+        <p>Choose a background color:</p>
+
+        <select id="colorSelect">
+            <option value="">Select a color</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="yellow">Yellow</option>
+        </select>
+
+        <p id="colorMessage">
+            No color selected.
+        </p>
+    </section>
+
+
+    <!-- 6. MOUSE EVENT -->
+    <section>
+        <h2>6. Mouse Event</h2>
+
+        <p>Move your mouse inside the box.</p>
+
+        <div id="mouseArea">
+            Move your mouse here
+        </div>
+
+        <p id="mousePosition">
+            X: 0 | Y: 0
+        </p>
+    </section>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // ==========================================
+        // 1. CLICK EVENT
+        // ==========================================
+
+        const button = document.getElementById("myButton");
+        const message1 = document.getElementById("message1");
+
+        button.addEventListener("click", function() {
+
+            message1.textContent = "Button was clicked!";
+
+        });
+
+
+        // ==========================================
+        // 2. INPUT EVENT
+        // ==========================================
+
+        const nameInput = document.getElementById("name");
+        const message2 = document.getElementById("message2");
+
+        nameInput.addEventListener("input", function(event) {
+
+            message2.textContent = "Hello, " + event.target.value;
+            console.log("Input value changed to:", event.target.value);
+
+        });
+
+
+        // ==========================================
+        // 3. KEYBOARD EVENT
+        // ==========================================
+
+        const message3 = document.getElementById("message3");
+        const keyInfo = document.getElementById("keyInfo");
+
+        document.addEventListener("keydown", function(event) {
+
+            message3.textContent =
+                "You pressed: " + event.key;
+
+            keyInfo.textContent =
+                "Key: " + event.key +
+                " | Key Code: " + event.keyCode;
+
+            console.log("You pressed:", event.key);
+            console.log("Key code:", event.keyCode);
+
+        });
+
+
+        // ==========================================
+        // 4. ENTER KEY
+        // ==========================================
+
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "Enter") {
+
+                console.log("You pressed the Enter key!");
+
+                message3.textContent =
+                    "You pressed the Enter key!";
+
+            }
+
+        });
+
+
+        // ==========================================
+        // 5. SELECT / CHANGE EVENT
+        // ==========================================
+
+        const categorySelect =
+            document.getElementById("categorySelect");
+
+        const spanSelectedValue =
+            document.getElementById("spanSelectedValue");
+
+        categorySelect.addEventListener("change", function(event) {
+
+            spanSelectedValue.textContent =
+                event.target.value;
+
+        });
+
+
+        // ==========================================
+        // 6. BACKGROUND COLOR
+        // ==========================================
+
+        const colorSelect =
+            document.getElementById("colorSelect");
+
+        const colorMessage =
+            document.getElementById("colorMessage");
+
+        colorSelect.addEventListener("change", function(event) {
+
+            const selectedColor = event.target.value;
+
+            if (selectedColor === "") {
+
+                document.body.style.backgroundColor = "white";
+
+                colorMessage.textContent =
+                    "No color selected.";
+
+            } else {
+
+                document.body.style.backgroundColor =
+                    selectedColor;
+
+                colorMessage.textContent =
+                    "Background color: " + selectedColor;
+
+            }
+
+        });
+
+
+        // ==========================================
+        // 7. MOUSEMOVE EVENT
+        // ==========================================
+
+        const mouseArea =
+            document.getElementById("mouseArea");
+
+        const mousePosition =
+            document.getElementById("mousePosition");
+
+        mouseArea.addEventListener("mousemove", function(event) {
+
+            mousePosition.textContent =
+                "X: " + event.clientX +
+                " | Y: " + event.clientY;
+
+        });
+
+
+        // ==========================================
+        // 8. MOUSE ENTER
+        // ==========================================
+
+        mouseArea.addEventListener("mouseenter", function() {
+
+            mouseArea.textContent =
+                "Mouse entered the box!";
+
+        });
+
+
+        // ==========================================
+        // 9. MOUSE LEAVE
+        // ==========================================
+
+        mouseArea.addEventListener("mouseleave", function() {
+
+            mouseArea.textContent =
+                "Move your mouse here";
+
+        });
+
+    </script>
+
+</body>
+
+</html>

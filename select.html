@@ -13,10 +13,16 @@
     </select>
 
 
-    <h2>Selected Value: </span></h2>
+    <h2>Selected Value:<span id="spanlectedValue"></span> </span></h2>
 
     <script>
-        
+        const select = document.getElementById('mySelect');
+        const selectedValueSpan = document.getElementById('spanlectedValue');
+
+        select.addEventListener('change', function() {
+            selectedValueSpan.textContent = 
+            `${event.target.value}`;
+        });
     </script>
 </body>
 </html>

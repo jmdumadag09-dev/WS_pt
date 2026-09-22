@@ -9,7 +9,10 @@
     <p id="message">Waiting for you to press a key...</p>
 
     <script>
-        
+        document.addEventListener('keydown', function(event) {
+            console.log('You pressed a key: ' + event.key);
+            console.log('Key code: ' + event.keyCode);
+        });
     </script>
 
 

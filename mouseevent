@@ -10,7 +10,9 @@
     <p id="position">Mouse position will appear here.</p>
 
     <script>
-        
+        document.addEventListener('mousemove', function(event) {
+            console.log('Mouse moved to: X=' + event.clientX + ', Y=' + event.clientY);
+        });
     </script>
 
 </body>

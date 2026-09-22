@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Navigation</title>
+</head>
+
+<body>
+
+    <div id="container">
+
+        <h2 id="title">My List</h2>
+
+        <p id="first">First Item</p>
+
+        <p id="second">Second Item</p>
+
+        <p id="third">Third Item</p>
+
+    </div>
+
+    <script src="script.js"></script>
+
+
+
+<script>
+const container = document.getElementById("container");
+
+const first = document.getElementById("first");
+
+const second = document.getElementById("second");
+
+const third = document.getElementById("third");
+
+
+// parentNode
+console.log("Parent Node:");
+console.log(second.parentNode);
+
+
+// children
+console.log("Children:");
+console.log(container.children);
+
+
+// firstElementChild
+console.log("First Child:");
+console.log(container.firstElementChild);
+
+
+// lastElementChild
+console.log("Last Child:");
+console.log(container.lastElementChild);
+
+
+// nextElementSibling
+console.log("Next Sibling of Second:");
+console.log(second.nextElementSibling);
+
+
+// previousElementSibling
+console.log("Previous Sibling of Second:");
+console.log(second.previousElementSibling);
+
+
+// parentElement
+console.log("Parent Element:");
+console.log(second.parentElement);
+</script>
+
+</body>
+</html>

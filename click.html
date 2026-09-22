@@ -10,6 +10,11 @@
     <p id="message"></p>
 
     <script>
+        const button = document.getElementById('myButton');
+
+        button.addEventListener('click', function() { 
+        document.getElementById('message').textContent = 'Button was clicked!';
+        })
        
     </script>
 

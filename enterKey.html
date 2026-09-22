@@ -11,7 +11,15 @@
 
     <p id="message"></p>
 
+
     <script>
+
+        document.addEventListener('keydown', function(event) {
+            if (event.keyCode === 13) {
+               console.log('You pressed the Enter key!');
+            document.getElementById('message').textContent = 'You pressed the Enter key!';
+            }
+        });
       
     </script>
 

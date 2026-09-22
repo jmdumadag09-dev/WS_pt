@@ -16,6 +16,15 @@
     </select>
 
     <script>
+
+        const colorSelect = document.getElementById('colorSelect');
+
+        colorSelect.addEventListener('change', function() {
+            const selectedColor = event.target.value;
+            document.body.style.backgroundColor = selectedColor;
+        });
+
+        
        
     </script>
 
