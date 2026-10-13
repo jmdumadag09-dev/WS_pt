@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Morning Exercise Tracker</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+            background-color: rgb(34, 53, 161);
+        }
+
+        #taskContainer {
+            background-color: white;
+            padding: 20px;
+            width: 400px;
+        }
+
+        #taskInfo {
+            background-color: lightgray;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="taskContainer">
+
+        <h1>Morning Exercise Tracker</h1>
+
+                <div id="taskInfo">
+            Morning Exercise Information
+        </div>
+
+        <h2 id="taskName">Jogging</h2>
+
+        <p id="duration">
+            Duration: 1 hour
+        </p>
+
+        <p id="message">
+            This is your morning exercise.
+        </p>
+
+        <button id="updateButton">
+            Update Exercise
+        </button>
+
+        <br><br>
+
+         <p id="status">
+            Status: Planned
+        </p>
+
+        <form id="exerciseForm">
+            <input
+                type="text"
+                id="newExercise"
+                placeholder="Enter new exercise"
+            >
+
+            <button type="submit">
+                Submit
+            </button>
+        </form>
+
+        <br>
+
+        <label for="statusSelect">
+            Status:
+        </label>
+
+        <select id="statusSelect">
+            <option value="Planned">Planned</option>
+            <option value="Doing">Doing</option>
+            <option value="Done">Done</option>
+        </select>
+
+
+
+    </div>
+
+    <script>
+        const taskName = document.getElementById("taskName");
+        const message = document.querySelector("#message");
+        const container = document.getElementById("taskContainer");
+
+        const updateButton = document.getElementById("updateButton");
+        const exerciseForm = document.getElementById("exerciseForm");
+        const newExercise = document.getElementById("newExercise");
+        const statusSelect = document.getElementById("statusSelect");
+        const status = document.getElementById("status");
+        const taskInfo = document.getElementById("taskInfo");
+
+        const heading = container.firstElementChild;
+
+        taskName.textContent = "Jogging";
+        message.textContent = "This is your morning exercise.";
+
+        message.style.color = "blue";
+        container.style.backgroundColor = "white";
+
+        const newMessage = document.createElement("p");
+        newMessage.textContent = "Welcome to the morning exercise tracker.";
+        container.appendChild(newMessage);
+
+        container.removeChild(newMessage);
+
+        function updateExercise() {
+            message.textContent = "Exercise updated successfully!";
+            message.style.color = "green";
+        }
+
+        function submitExercise(event) {
+            event.preventDefault();
+
+            if (newExercise.value !== "") {
+                taskName.textContent = newExercise.value;
+                message.textContent =
+                    "New exercise: " + newExercise.value;
+            }
+        }
+
+        function checkEnter(event) {
+            if (event.key === "Enter") {
+                message.textContent = "Enter key detected!";
+            }
+        }
+
+        function changeStatus(event) {
+            status.textContent =
+                "Status: " + event.target.value;
+
+            message.textContent =
+                "Selected status: " + event.target.value;
+        }
+
+        function mouseOver() {
+            taskInfo.style.backgroundColor = "lightblue";
+        }
+
+        function mouseOut() {
+            taskInfo.style.backgroundColor = "lightgray";
+        }
+
+        updateButton.addEventListener("click", updateExercise);
+
+        exerciseForm.addEventListener("submit", submitExercise);
+
+        newExercise.addEventListener("keydown", checkEnter);
+
+        statusSelect.addEventListener("change", changeStatus);
+
+        taskInfo.addEventListener("mouseover", mouseOver);
+
+        taskInfo.addEventListener("mouseout", mouseOut);
+    </script>
+
+</body>
+</html>

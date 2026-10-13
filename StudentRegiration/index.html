@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Student Registration</h1>
+        <p class="subtitle">Fill in your information below.</p>
+
+        <p id="success" class="success" role="status" hidden>
+            Registration successful!
+        </p>
+
+        <form id="form" novalidate>
+            <h3>Personal Information</h3>
+
+            <div class="grid">
+                <div>
+                    <label for="studentId">Student ID *</label>
+                    <input id="studentId" name="studentId" data-validate="required"
+                           data-error="Student ID is required.">
+                    <small></small>
+                </div>
+
+                <div>
+                    <label for="fullName">Full Name *</label>
+                    <input id="fullName" name="fullName" data-validate="required"
+                           data-error="Full name is required.">
+                    <small></small>
+                </div>
+
+                <div>
+                    <label for="email">Email *</label>
+                    <input id="email" name="email" type="email" data-validate="email"
+                           data-error="Enter a valid email address.">
+                    <small></small>
+                </div>
+
+                <div>
+                    <label for="phone">Phone Number *</label>
+                    <input id="phone" name="phone" type="tel" placeholder="09123456789"
+                           data-validate="phone" data-error="Use 09XXXXXXXXX or +639XXXXXXXXX.">
+                    <small></small>
+                </div>
+
+                <div>
+                    <label for="dob">Date of Birth *</label>
+                    <input id="dob" name="dob" type="date" data-validate="dob"
+                           data-error="Enter a valid date that is not in the future.">
+                    <small></small>
+                </div>
+
+                <div>
+                    <label for="gender">Gender *</label>
+                    <select id="gender" name="gender" data-validate="required"
+                            data-error="Please select your gender.">
+                        <option value="">Select gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Prefer not to say</option>
+                    </select>
+                    <small></small>
+                </div>
+
+                <div>
+                    <label for="program">Program *</label>
+                    <select id="program" name="program" data-validate="required"
+                            data-error="Please select your program.">
+                        <option value="">Select program</option>
+                        <option>BS Information Technology</option>
+                        <option>BS Computer Science</option>
+                        <option>BS Information Systems</option>
+                        <option>BS Business Administration</option>
+                        <option>Other</option>
+                    </select>
+                    <small></small>
+                </div>
+
+                <div>
+                    <label for="year">Year Level *</label>
+                    <select id="year" name="year" data-validate="required"
+                            data-error="Please select your year level.">
+                        <option value="">Select year</option>
+                        <option>1st Year</option>
+                        <option>2nd Year</option>
+                        <option>3rd Year</option>
+                        <option>4th Year</option>
+                        <option>5th Year</option>
+                    </select>
+                    <small></small>
+                </div>
+
+                <div class="wide">
+                    <label for="address">Address *</label>
+                    <textarea id="address" name="address" data-validate="required"
+                              data-error="Address is required."></textarea>
+                    <small></small>
+                </div>
+            </div>
+
+            <h3>Account Security</h3>
+
+            <div class="grid">
+                <div>
+                    <label for="password">Password *</label>
+                    <div class="password">
+                        <input id="password" name="password" type="password"
+                               data-validate="password" data-error="Use at least 8 characters.">
+                        <button type="button" class="toggle" data-target="password">Show</button>
+                    </div>
+                    <small></small>
+                </div>
+
+                <div>
+                    <label for="confirm">Confirm Password *</label>
+                    <div class="password">
+                        <input id="confirm" name="confirm" type="password"
+                               data-validate="confirm" data-error="Passwords do not match.">
+                        <button type="button" class="toggle" data-target="confirm">Show</button>
+                    </div>
+                    <small></small>
+                </div>
+            </div>
+
+            <div class="agreement">
+                <label>
+                    <input id="agreement" name="agreement" type="checkbox"
+                           data-validate="agreement">
+                    I confirm that my information is accurate and agree to the terms. *
+                </label>
+                <small></small>
+            </div>
+
+            <div class="actions">
+                <button type="submit" id="submit" data-default="Register">Register</button>
+                <button type="reset" class="reset">Reset</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
